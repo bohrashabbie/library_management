@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Form View -->
+    <record id="view_library_book_form" model="ir.ui.view">
+        <field name="name">library.book.form</field>
+        <field name="model">library.book</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="author"/>
+                            <field name="isbn"/>
+                            <field name = "book_id"/>
+                        </group>
+                        <group>
+                            <field name="category"/>
+                            <field name="publication_date"/>
+                            <field name="available_copies"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Book Details">
+                            <group>
+                                <field name="name"/>
+                                <field name="author"/>
+                                <field name="isbn"/>
+                            </group>
+                            <group>
+                                <field name="description"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_library_book_search" model="ir.ui.view">
+        <field name="name">library.book.search</field>
+        <field name="model">library.book</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" string="Book Title"/>
+                <field name="author" string="Author"/>
+                <field name="isbn" string="ISBN"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Tree/List View -->
+    <record id="view_library_book_tree" model="ir.ui.view">
+        <field name="name">library.book.tree</field>
+        <field name="model">library.book</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" string="name"/>
+                <field name="author" string="Author"/>
+                <field name="isbn" string="ISBN"/>
+                <field name="category"/>
+                <field name="available_copies"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Kanban View -->
+    <record id="view_library_book_kanban" model="ir.ui.view">
+        <field name="name">library.book.kanban</field>
+        <field name="model">library.book</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile" sample="1" quick_create="false">
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_details">
+                            <field name="name" class="fw-bolder fs-5"/>
+                            <field name="author"/>
+                            <field name="isbn"/>
+                        </div>
+                        <footer>
+                            <field name="category"/>
+                            <field name="available_copies"/>
+                        </footer>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Graph View -->
+    <record id="view_library_book_graph" model="ir.ui.view">
+        <field name="name">library.book.graph</field>
+        <field name="model">library.book</field>
+        <field name="arch" type="xml">
+            <graph string="Book Statistics">
+                <field name="available_copies"/>
+                <field name="name"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- Calendar View -->
+    <record id="view_library_book_calendar" model="ir.ui.view">
+        <field name="name">library.book.calendar</field>
+        <field name="model">library.book</field>
+        <field name="arch" type="xml">
+            <calendar color="category" date_start="publication_date" string="Library Book Calendar">
+                <field name="name"/>
+            </calendar>
+        </field>
+    </record>
+
+    <!-- Window Action -->
+    <record id="action_library_book" model="ir.actions.act_window">
+        <field name="name">Library Books</field>
+        <field name="res_model">library.book</field>
+        <field name="view_mode">list,form,kanban,graph,calendar</field>
+    </record>
+
+    <!-- Menu Structure -->
+    <menuitem id="library_management_main_menu" name="Library Management" sequence="1"/>
+
+    <menuitem id="library_book_menu" name="Books" parent="library_management_main_menu" sequence="1"/>
+    <menuitem id="library_book_sub_menu" name="Manage Books" parent="library_book_menu" action="action_library_book" sequence="1"/>
+
+    <menuitem id="library_borrower_menu" name="Borrowers" parent="library_management_main_menu" sequence="2"/>
+    <menuitem id="library_loan_menu" name="Book Loans" parent="library_management_main_menu" sequence="3"/>
+</odoo>

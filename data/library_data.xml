@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>  
+    <!-- Sample Book Records -->
+    <record id="book_1" model="library.book">
+        <field name="name">harry potter</field>
+        <field name="author">J.K.rolling</field>
+        <field name="isbn">01</field>
+        <field name="publication_date">1925-04-10</field>
+        <field name="category">fiction</field>
+        <field name="description">harry potter and 7 other parts</field>
+        <field name="available_copies">5</field>
+    </record>
+    
+    <record id="book_2" model="library.book">
+        <field name="name">never ever ever</field>
+        <field name="author">steve smith</field>
+        <field name="isbn">02</field>
+        <field name="publication_date">2014-02-10</field>
+        <field name="category">non_fiction</field>
+        <field name="description">a noval for love</field>
+        <field name="available_copies">3</field>
+    </record>
+    
+    <record id="book_3" model="library.book">
+        <field name="name">its ends with us</field>
+        <field name="author">alex caryy</field>
+        <field name="isbn">03</field>
+        <field name="publication_date">1965-08-01</field>
+        <field name="category">sci_fi</field>
+        <field name="description">love story that never ends.</field>
+        <field name="available_copies">8</field>
+    </record>
+    
+    <record id="book_4" model="library.book">
+        <field name="name">the father and rich son</field>
+        <field name="author">marc haselwood</field>
+        <field name="isbn">04</field>
+        <field name="publication_date">1947-06-25</field>
+        <field name="category">biography</field>
+        <field name="description">A True story of father and child</field>
+        <field name="available_copies">2</field>
+    </record>
+</odoo>
