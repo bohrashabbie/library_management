@@ -1,6 +1,5 @@
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
-import logging
 
 
 
@@ -24,10 +23,8 @@ class LibraryBook(models.Model):
     book_id = fields.Many2one('book.domain', 'book_domain')
 
     def write(self, vals):
-        _logger.info("---------------------------------------------information about error")   
         """ write method to ensure available copies are non-negative."""
         if 'available_copies' in vals and vals['available_copies'] < 0:
-            _logger.exception("------------------------------------------here is exception")
             raise ValidationError("Available copies cannot be negative.")
         return super(LibraryBook, self).write(vals)
 
